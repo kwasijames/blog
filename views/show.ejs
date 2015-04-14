@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<head>
+	<title><%= post.title %> </title>
+</head>
+<body>
+	<h1><%= post.title %> </h1>
+	<p><%= post.image %> </p>
+	<p><%= post.body %>	</p>
+	<a href="/post/<%= post.id %> /edit">Edit Post</a>
+
+	<form method="POST" action-"/post/<%= post.id %> ?_method=DELETE">
+		<button>Delete</button>
+	</form>
+
+</body>
+</html>

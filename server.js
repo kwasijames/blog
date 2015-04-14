@@ -24,5 +24,51 @@ var methodOverride = require("method-Override");
 //tell app which overide method to use
 app.use(methodOverride("method"));
 
+var sqlite3 = require("sqlite3").verbose();
+var db = new sqlite3.Database("blog_posts.db");
+
+// giphy api sections
+// begining of api search string before the search term
+var apiStart = "http://api.giphy.com/v1/gifs/search?q=";
+var apiEnd = "&api_key=dc6zaTOxFJmzC";
+
+app.get("/", function(req, res){
+	res.redirect("/posts");
+});
+
+// show all posts
+app.get("/posts", function(req, res){
+	// get posts from blog_post.db and send to index.ejs
+	db.all("SELECT * FROM posts", function(err, data){
+		if(err){
+			console.log(err);
+		}
+		else{
+			var posts = data;
+			console.log(posts);
+		}
+		res.render("index.ejs", {posts: posts});
+	});
+});
+
+// show individual posts(req.params.id - info from the url)
+app.get("/posts/:id", function(req, res){
+	
+ db.get("SELECT * FROM posts WHERE id = ?", req.params.id, function(err, data){
+		console.log(data);
+		res.render("show.ejs", {post: data});
+	});
+});
+
+// serve up a new page for creating a new post
+app.get("/posts/new", function(req, res){
+	res.render("new.ejs");
+});
+
+// Create post and post it to the post page
+app.post("/posts", function(req, res){
+
+})
 
 app.listen("3000");
+console.log("listening on port 3000");

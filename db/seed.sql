@@ -1,0 +1,1 @@
+INSERT INTO posts (title, body, image) VALUES ("TEST BLOG POST", "Hi this is a test", "http://www.hugohd.com/wp-content/uploads/Caribbean-Beaches-Wallpaper-Desktop-Desktop-Background-hugohd.com_.jpeg");

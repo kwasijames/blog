@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<body>
+	<h1>BLOG POST<h1>
+	<ul>
+			<% for(var i = 0; i < posts.length;i++){ %>
+			<li>
+			<h3><a href="/posts/<%= posts[i].id %> "> <%= posts[i].title %> </a><h3> <% } %>
+			</li>
+	</ul>
+
+<a href="posts/new">Add New Post</a>	
+</body>			
